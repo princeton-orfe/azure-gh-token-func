@@ -52,3 +52,5 @@ local.settings.json
 *.pyc
 .venv/
 .vscode/
+.python_packages/
+.DS_Store
