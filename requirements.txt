@@ -1,0 +1,8 @@
+# Uncomment to enable Azure Monitor OpenTelemetry
+# Ref: aka.ms/functions-azure-monitor-python 
+# azure-monitor-opentelemetry 
+
+azure-functions
+PyJWT==2.8.0
+cryptography==42.0.5
+requests==2.32.0

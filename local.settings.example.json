@@ -1,0 +1,10 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "GITHUB_APP_ID": "<your-app-id>",
+    "GITHUB_INSTALLATION_ID": "<your-installation-id>",
+    "GITHUB_PRIVATE_KEY": "<your-private-key>"
+  }
+}
