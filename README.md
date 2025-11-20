@@ -67,7 +67,7 @@ The script will:
 RESOURCE_GROUP="your-resource-group"
 FUNCTION_APP_NAME="your-function-app-name"
 STORAGE_ACCOUNT="yourstorageaccount"  # 3-24 chars, lowercase alphanumeric only
-LOCATION="eastus"
+LOCATION="eastus"  # Must support Flex Consumption - check with: az functionapp list-flexconsumption-locations
 
 # Create storage account (required for Azure Functions)
 az storage account create \
@@ -76,16 +76,14 @@ az storage account create \
   --resource-group $RESOURCE_GROUP \
   --sku Standard_LRS
 
-# Create the function app
+# Create the function app (Flex Consumption plan)
 az functionapp create \
   --name $FUNCTION_APP_NAME \
   --resource-group $RESOURCE_GROUP \
   --storage-account $STORAGE_ACCOUNT \
-  --consumption-plan-location $LOCATION \
+  --flexconsumption-location $LOCATION \
   --runtime python \
-  --runtime-version 3.11 \
-  --functions-version 4 \
-  --os-type Linux
+  --runtime-version 3.11
 
 # Set environment variables
 PRIVATE_KEY=$(cat path/to/your-private-key.pem)
@@ -215,6 +213,18 @@ Test at: `http://localhost:7071/api/GetGitHubToken`
     ├── __init__.py                # Function code
     └── function.json              # Trigger and binding config
 ```
+
+## Migrating Existing Apps to Flex Consumption
+
+If you have an existing function app on Linux Consumption (which reaches EOL September 2028), you'll need to create a new Flex Consumption app and redeploy:
+
+1. Create a new function app with `--flexconsumption-location` instead of `--consumption-plan-location`
+2. Copy your environment variables from the old app
+3. Deploy your code to the new app
+4. Update any Logic Apps or other services to use the new function URL
+5. Delete the old function app
+
+There's no in-place migration path - Flex Consumption requires a new app.
 
 ## Troubleshooting
 

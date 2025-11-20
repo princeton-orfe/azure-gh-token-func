@@ -109,11 +109,9 @@ else
         --name "$FUNCTION_APP_NAME" \
         --resource-group "$RESOURCE_GROUP" \
         --storage-account "$STORAGE_ACCOUNT" \
-        --consumption-plan-location "$LOCATION" \
+        --flexconsumption-location "$LOCATION" \
         --runtime python \
-        --runtime-version 3.11 \
-        --functions-version 4 \
-        --os-type Linux
+        --runtime-version 3.11
     echo "Function app created."
 fi
 
