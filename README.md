@@ -208,7 +208,8 @@ Test at: `http://localhost:7071/api/GetGitHubToken`
 ├── local.settings.example.json    # Example local settings (safe for git)
 ├── local.settings.json            # Your local settings (gitignored)
 ├── scripts/
-│   └── deploy.sh                  # Interactive deployment script
+│   ├── deploy.sh                  # Interactive deployment script
+│   └── cleanup.sh                 # Delete function app and resources
 └── GetGitHubToken/
     ├── __init__.py                # Function code
     └── function.json              # Trigger and binding config
