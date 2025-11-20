@@ -178,19 +178,21 @@ Edit `local.settings.json`:
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "python",
-    "GITHUB_APP_ID": "2322109",
-    "GITHUB_INSTALLATION_ID": "95613337",
+    "GITHUB_APP_ID": "your-app-id",
+    "GITHUB_INSTALLATION_ID": "your-installation-id",
     "GITHUB_PRIVATE_KEY": "-----BEGIN RSA PRIVATE KEY-----\nMIIE...\n-----END RSA PRIVATE KEY-----"
   }
 }
 ```
 
-**Note**: The private key must be formatted as a single line with `\n` escape sequences:
+**Note**: For `local.settings.json`, the private key must be formatted as a single line with `\n` escape sequences (JSON doesn't support multi-line strings):
 
 ```bash
-# Convert .pem to single line
+# Convert .pem to single line for local.settings.json
 awk 'NF {printf "%s\\n", $0}' your-private-key.pem
 ```
+
+For Azure deployment via CLI, you can use the raw PEM file directly - the deployment script and manual commands handle this automatically.
 
 ### Run Locally
 
